@@ -51,16 +51,40 @@
 
 ];
     // var_dump($hotels);
+    
 
-    foreach($hotels as $curHotel){
-        foreach($curHotel as $key => $value){
-            echo "$key" . " - " . "$value";
+    // foreach($hotels as $curHotel){
+    //     foreach($curHotel as $key => $value){
+    //         echo "$key" . " - " . "$value";
 
-            echo "<br>";
-        }
-    }
+    //         echo "<br>";
+    //     }
+    // }
 
     ?>
+
+    <table class="table">
+         <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Parcheggio</th>
+            <th>Voto</th>
+            <th>Distanza dal centro</th>
+        </tr>
+    </thead>
+  <tbody>
+    <?php foreach ($hotels as $curHotel ) { ?>
+    <tr>
+      <td><?php echo $curHotel['name']; ?></td>
+      <td><?php echo $curHotel['description'];?></td>
+      <td><?php echo $curHotel['parking'] ? "Si" : "No";?></td>
+      <td><?php echo $curHotel['vote'];?></td>
+      <td><?php echo $curHotel['distance_to_center'];?></td>
+    </tr>
+    <?php } ?>
+  </tbody>
+</table>
     
 </body>
 </html>

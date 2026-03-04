@@ -8,7 +8,6 @@
     <title>PHP Hotels©</title>
 </head>
 <body>
-
     <h1>PHP Hotel</h1>
 <?php
     $hotels = [
@@ -50,41 +49,44 @@
     ],
 
 ];
-    // var_dump($hotels);
-    
-
-    // foreach($hotels as $curHotel){
-    //     foreach($curHotel as $key => $value){
-    //         echo "$key" . " - " . "$value";
-
-    //         echo "<br>";
-    //     }
-    // }
-
     ?>
+    <div class="container">
+        <h2>Filtra gli hotel:</h2>
+    <form action="./index.php" method="GET">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="parking" id="checkDefault">
+            <label class="form-check-label" for="checkDefault">
+                Parcheggio disponibile
+            </label>
+        </div>
+        <button class="btn btn-primary" type="submit">Filtra</button>
+    </form>
 
-    <table class="table">
+    <table class="table mt-4">
          <thead>
         <tr>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Parcheggio</th>
-            <th>Voto</th>
-            <th>Distanza dal centro</th>
+            <?php 
+                $keys = array_keys($hotels[0]);
+                // var_dump($keys);
+                foreach($keys as $curKey){
+                    // var_dump($curKey);
+                    echo "<th>$curKey</th>";
+                }
+            ?>
         </tr>
     </thead>
   <tbody>
-    <?php foreach ($hotels as $curHotel ) { ?>
-    <tr>
-      <td><?php echo $curHotel['name']; ?></td>
-      <td><?php echo $curHotel['description'];?></td>
-      <td><?php echo $curHotel['parking'] ? "Si" : "No";?></td>
-      <td><?php echo $curHotel['vote'];?></td>
-      <td><?php echo $curHotel['distance_to_center'];?></td>
+        <?php foreach ($hotels as $curHotel ) { ?>
+        <tr>
+      <?php foreach($curHotel as $key => $value) {
+            echo "<td>$value</td>"; ?>
+        <?php } ?>
     </tr>
-    <?php } ?>
+<?php } ?>
   </tbody>
 </table>
+
+</div> 
     
 </body>
 </html>

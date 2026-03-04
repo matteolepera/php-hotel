@@ -78,8 +78,8 @@
   <tbody>
         <?php foreach ($hotels as $curHotel ) { ?>
         <tr>
-      <?php foreach($curHotel as $key => $value) {
-            echo "<td>$value</td>"; ?>
+      <?php foreach($curHotel as $key => $value) {?>
+            <td><?php echo $key == 'parking' ? ($value ? 'Yes' : 'No') : $value ?></td>
         <?php } ?>
     </tr>
 <?php } ?>

@@ -51,10 +51,10 @@
 ];
 
 
-$parkFilter = "false";
+$parkFilter = false;
 
 if($_GET["parking"] == "on"){
-    $parkFilter = "true";
+    $parkFilter = true;
 }
     ?>
     <div class="container">
@@ -85,7 +85,7 @@ if($_GET["parking"] == "on"){
   <tbody>
         <?php foreach ($hotels as $curHotel ) {
              if($parkFilter){
-                if(!$curHotel["parking"]){
+                if(!$curHotel['parking']){
                     continue;
                     }
                 } 

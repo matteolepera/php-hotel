@@ -49,10 +49,17 @@
     ],
 
 ];
+
+
+$parkFilter = "false";
+
+if($_GET["parking"] == "on"){
+    $parkFilter = "true";
+}
     ?>
     <div class="container">
         <h2>Filtra gli hotel:</h2>
-    <form action="./index.php" method="GET">
+    <form action="" method="GET">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" name="parking" id="checkDefault">
             <label class="form-check-label" for="checkDefault">
@@ -66,7 +73,7 @@
          <thead>
         <tr>
             <?php 
-                $keys = array_keys($hotels[0]);
+            $keys = array_keys($hotels[0]);
                 // var_dump($keys);
                 foreach($keys as $curKey){
                     // var_dump($curKey);
@@ -76,10 +83,17 @@
         </tr>
     </thead>
   <tbody>
-        <?php foreach ($hotels as $curHotel ) { ?>
+        <?php foreach ($hotels as $curHotel ) {
+             if($parkFilter){
+                if(!$curHotel["parking"]){
+                    continue;
+                    }
+                } 
+        ?>
         <tr>
       <?php foreach($curHotel as $key => $value) {?>
-            <td><?php echo $key == 'parking' ? ($value ? 'Yes' : 'No') : $value ?></td>
+            <td><?php
+                     echo $key == 'parking' ? ($value ? 'Yes' : 'No') : $value; ?></td>
         <?php } ?>
     </tr>
 <?php } ?>
